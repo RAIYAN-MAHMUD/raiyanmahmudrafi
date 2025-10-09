@@ -6,7 +6,7 @@ const About = () => {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 animate-fade-in">
           <p className="text-primary font-semibold text-sm tracking-wider uppercase mb-2">About Me</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">I'm not a seller, I solve problems for you.</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Designing Solutions, Not Just Visuals</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
