@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import { Mail, Linkedin, MessageCircle } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -19,18 +19,38 @@ const Contact = () => {
               Ready to take your business to the next level? I'm here to provide expert virtual assistance 
               tailored to your needs. Let's discuss how we can work together.
             </p>
-            <Button
-              onClick={() => window.location.href = "mailto:rafsonmahud@gmail.com"}
-              className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-10 py-6 gap-2"
-            >
-              <Mail className="w-5 h-5" />
-              Contact Me
-            </Button>
-            <p className="mt-6 text-foreground/80">
-              <a href="mailto:rafsonmahud@gmail.com" className="hover:text-accent transition-colors">
-                rafsonmahud@gmail.com
+            <div className="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+              <a 
+                href="mailto:rafsonmahud@gmail.com"
+                className="flex flex-col items-center gap-2 p-6 bg-background/50 backdrop-blur-sm rounded-xl hover:bg-background/70 transition-all group"
+              >
+                <Mail className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
+                <span className="font-semibold">Email</span>
+                <span className="text-sm text-foreground/70 text-center">rafsonmahud@gmail.com</span>
               </a>
-            </p>
+              
+              <a 
+                href="https://bd.linkedin.com/in/raiyan-mahmud-rafi-047a4029b"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-2 p-6 bg-background/50 backdrop-blur-sm rounded-xl hover:bg-background/70 transition-all group"
+              >
+                <Linkedin className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
+                <span className="font-semibold">LinkedIn</span>
+                <span className="text-sm text-foreground/70 text-center">Connect with me</span>
+              </a>
+              
+              <a 
+                href="https://wa.me/8801916583719"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-2 p-6 bg-background/50 backdrop-blur-sm rounded-xl hover:bg-background/70 transition-all group"
+              >
+                <MessageCircle className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
+                <span className="font-semibold">WhatsApp</span>
+                <span className="text-sm text-foreground/70 text-center">+880 1916 583719</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
