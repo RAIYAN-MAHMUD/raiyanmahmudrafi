@@ -10,7 +10,7 @@ const Portfolio = () => {
     },
     {
       icon: PhoneCall,
-      title: "500+ Successful Sales Calls",
+      title: "5000+ Successful Sales Calls",
       description: "Executed professional cold calling campaigns resulting in high conversion rates and expanded client portfolios.",
       impact: "Generated qualified leads consistently",
     },
@@ -68,7 +68,7 @@ const Portfolio = () => {
             <div className="flex items-center justify-center mb-2">
               <Award className="w-8 h-8 text-accent" />
             </div>
-            <p className="text-4xl font-bold text-accent mb-2">500+</p>
+            <p className="text-4xl font-bold text-accent mb-2">5000+</p>
             <p className="text-foreground/70">Successful Calls</p>
           </div>
           <div className="text-center">
