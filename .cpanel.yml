@@ -1,0 +1,33 @@
+# .cpanel.yml - cPanel deployment configuration
+# Place this file at the repository root. Replace USERNAME with your cPanel account username.
+
+deployment:
+  tasks:
+    - name: Start deployment
+      commands:
+        - echo "Starting cPanel deployment"
+
+    - name: Install dependencies if package.json exists
+      commands:
+        - if [ -f package.json ]; then echo "package.json found, installing dependencies"; npm ci; else echo "no package.json, skipping npm install"; fi
+
+    - name: Build project if a build script exists in package.json
+      commands:
+        - if [ -f package.json ] && grep -q "\"build\"" package.json; then echo "build script found, running npm run build"; npm run build; else echo "no build script, skipping build"; fi
+
+    - name: Choose source folder
+      commands:
+        - SRC="."
+        - if [ -d dist ]; then SRC="dist"; fi
+        - if [ -d build ]; then SRC="build"; fi
+        - echo "Deploying from $SRC"
+
+    - name: Deploy to public_html
+      commands:
+        - if [ -z "\"$CPANEL_USER\"" ] || [ "$CPANEL_USER" = "" ]; then echo "CPANEL_USER not set; replace USERNAME below with your cPanel account username"; fi
+        - echo "Copying files to /home/USERNAME/public_html/ - REPLACE USERNAME with your cPanel username"
+        - rsync -av --delete "$SRC"/ /home/USERNAME/public_html/
+
+    - name: Finish
+      commands:
+        - echo "Deployment finished"
