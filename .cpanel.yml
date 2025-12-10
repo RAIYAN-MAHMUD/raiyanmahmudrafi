@@ -1,5 +1,5 @@
 # .cpanel.yml - cPanel deployment configuration
-# Place this file at the repository root. Replace USERNAME with your cPanel account username.
+# Place this file at the repository root. Uses CPANEL_USER environment variable to determine cPanel username; if not set, defaults to USERNAME.
 
 deployment:
   tasks:
@@ -24,9 +24,9 @@ deployment:
 
     - name: Deploy to public_html
       commands:
-        - if [ -z "\"$CPANEL_USER\"" ] || [ "$CPANEL_USER" = "" ]; then echo "CPANEL_USER not set; replace USERNAME below with your cPanel account username"; fi
-        - echo "Copying files to /home/USERNAME/public_html/ - REPLACE USERNAME with your cPanel username"
-        - rsync -av --delete "$SRC"/ /home/USERNAME/public_html/
+        - if [ -z "\"$CPANEL_USER\"" ] || [ "$CPANEL_USER" = "" ]; then echo "CPANEL_USER not set; using fallback 'USERNAME'. To avoid this, set the CPANEL_USER environment variable in cPanel repository settings."; fi
+        - echo "Copying files to /home/${CPANEL_USER:-USERNAME}/public_html/"
+        - rsync -av --delete "$SRC"/ "/home/${CPANEL_USER:-USERNAME}/public_html/"
 
     - name: Finish
       commands:
